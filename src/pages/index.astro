@@ -1,0 +1,149 @@
+---
+import { Image } from "astro:assets";
+import { siteContent } from "../content/site";
+import portrait from "../../Professional Black-and-White Headshot.png";
+import "../styles/global.css";
+
+const {
+  name,
+  firstName,
+  role,
+  personality,
+  location,
+  coordinates,
+  intro,
+  about,
+  links,
+} = siteContent;
+
+const title = `${name} — ${role}`;
+const description =
+  "The personal website of Prince Mehmi, a backend engineer in Punjab, India.";
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const currentYear = new Date().getFullYear();
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#f8f5ef" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonicalURL} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:site_name" content={name} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="site-header">
+        <a class="wordmark" href="/" aria-label={`${name}, home`}>
+          <span aria-hidden="true">PM</span>
+        </a>
+        <div class="coordinate-control">
+          <button
+            class="coordinates"
+            type="button"
+            title={coordinates.full}
+            aria-label={`Copy coordinates ${coordinates.full}`}
+            aria-describedby="coordinate-status"
+            data-coordinate-copy={coordinates.full}
+          >
+            {coordinates.display}
+          </button>
+          <span
+            id="coordinate-status"
+            class="coordinate-status"
+            role="status"
+            aria-live="polite"
+          ></span>
+        </div>
+      </header>
+
+      <main>
+        <section class="introduction" aria-labelledby="intro-title">
+          <div class="intro-copy">
+            <p class="eyebrow">Hello, internet.</p>
+            <h1 id="intro-title">
+              I’m {firstName}.<span class="name-crown" aria-hidden="true">♔</span>
+            </h1>
+            <p class="lede">{intro}</p>
+            <div class="byline">
+              {role}
+              <span aria-hidden="true">·</span>
+              <details class="personality-note">
+                <summary>{personality}</summary>
+                <p>
+                  Four letters. A convenient shorthand. An incomplete
+                  specification of a human being.
+                </p>
+              </details>
+              <span aria-hidden="true">·</span>
+              <span>{location}</span>
+            </div>
+          </div>
+          <figure class="portrait">
+            <Image
+              src={portrait}
+              alt="Prince Mehmi"
+              width={320}
+              densities={[1, 2]}
+              loading="eager"
+            />
+          </figure>
+        </section>
+
+        <section class="about" aria-labelledby="about-title">
+          <h2 id="about-title">A little more</h2>
+          <p>{about}</p>
+        </section>
+
+        {
+          links.length > 0 && (
+            <nav class="elsewhere" aria-label="Elsewhere">
+              <h2>Elsewhere</h2>
+              <ul>
+                {links.map((link) => (
+                  <li>
+                    <a href={link.href} rel="me noreferrer">
+                      {link.label}
+                      <span aria-hidden="true"> ↗</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+              <p>For the longer, more professional version.</p>
+            </nav>
+          )
+        }
+      </main>
+
+      <footer>
+        <p>© {currentYear} {name}</p>
+        <button
+          class="footer-mark"
+          type="button"
+          aria-label="Reveal a small hidden detail"
+          aria-expanded="false"
+          aria-controls="secret-message"
+          data-secret-trigger
+        >
+          <span aria-hidden="true">※</span>
+        </button>
+        <p id="secret-message" class="secret-message" hidden aria-live="polite">
+          Still a work in progress. Probably always will be.
+        </p>
+      </footer>
+    </div>
+
+    <script is:inline src="/easter-eggs.js"></script>
+  </body>
+</html>

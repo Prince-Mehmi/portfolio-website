@@ -1,70 +1,48 @@
-# Getting Started with Create React App
+# Prince Mehmi
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A small personal website built with [Astro](https://astro.build/).
 
-## Available Scripts
+## Local development
 
-In the project directory, you can run:
+Install Node.js 22.19 or newer, then run:
 
-### `npm start`
+```sh
+npm install
+npm run dev
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Astro will print the local URL, usually `http://localhost:4321`.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Production build
 
-### `npm test`
+```sh
+npm run build
+npm run preview
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The static production site is written to `dist/`.
 
-### `npm run build`
+## Editing the site
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The personal copy and external links live in `src/content/site.ts`. Missing
+optional links are omitted automatically. Layout and metadata live in
+`src/pages/index.astro`, and the visual design is in `src/styles/global.css`.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Domain and deployment
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The repository is configured for `https://www.princemehmi.com` in
+`astro.config.mjs` and `public/CNAME`.
 
-### `npm run eject`
+To use another domain:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. Change `site` in `astro.config.mjs`.
+2. Update `public/CNAME` to the hostname only.
+3. Point the domain's DNS records at the chosen static host.
+4. Configure that same domain in the hosting provider and enable HTTPS.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Any static host that can publish the `dist/` directory will work. For GitHub
+Pages, configure a GitHub Actions workflow to run `npm ci` and `npm run build`,
+then upload `dist/` as the Pages artifact.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Optional details that can be added later in `src/content/site.ts` include a
+verified writing link or other personal website.

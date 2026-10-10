@@ -1,0 +1,370 @@
+:root {
+  color-scheme: light;
+  --paper: #f8f5ef;
+  --ink: #252823;
+  --muted: #696b64;
+  --accent: #a34c32;
+  --rule: #d7d0c4;
+  --serif: Georgia, "Times New Roman", serif;
+  --mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 18px;
+  line-height: 1.6;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+}
+
+::selection {
+  background: #e4c5b9;
+  color: var(--ink);
+}
+
+a,
+button,
+summary {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a {
+  color: inherit;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.25em;
+}
+
+a:hover {
+  color: var(--accent);
+}
+
+:focus-visible {
+  border-radius: 2px;
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+.page-shell {
+  display: grid;
+  margin: 0 auto;
+  max-width: 760px;
+  min-height: 100svh;
+  padding: 2rem 2rem 1.5rem;
+}
+
+.site-header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: clamp(6rem, 17vh, 10rem);
+}
+
+.wordmark {
+  align-items: center;
+  border: 1px solid var(--ink);
+  display: inline-flex;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  height: 2.35rem;
+  justify-content: center;
+  letter-spacing: -0.08em;
+  text-decoration: none;
+  transform: rotate(-2deg);
+  width: 2.35rem;
+}
+
+.wordmark:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.coordinates,
+.coordinate-status,
+.eyebrow,
+h2,
+.byline,
+.elsewhere p,
+footer {
+  font-family: var(--mono);
+}
+
+.coordinate-control {
+  position: relative;
+  text-align: right;
+}
+
+.coordinates {
+  background: transparent;
+  border: 0;
+  color: var(--muted);
+  cursor: copy;
+  font-size: 0.62rem;
+  letter-spacing: 0.05em;
+  padding: 0.35rem 0;
+  text-transform: uppercase;
+}
+
+.coordinates:hover {
+  color: var(--accent);
+}
+
+.coordinate-status {
+  color: var(--accent);
+  font-size: 0.55rem;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: calc(100% + 0.15rem);
+}
+
+.introduction {
+  align-items: start;
+  display: grid;
+  gap: 2.5rem;
+  grid-template-columns: minmax(0, 1fr) 9rem;
+  max-width: 680px;
+}
+
+.intro-copy {
+  min-width: 0;
+}
+
+.portrait {
+  border: 1px solid var(--ink);
+  margin: 0.5rem 0 0;
+  padding: 0.25rem;
+  transform: rotate(1.5deg);
+}
+
+.portrait img {
+  aspect-ratio: 4 / 5;
+  display: block;
+  height: auto;
+  object-fit: cover;
+  object-position: center 18%;
+  width: 100%;
+}
+
+.eyebrow {
+  color: var(--accent);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  margin: 0 0 1rem;
+  text-transform: uppercase;
+}
+
+h1 {
+  font-size: clamp(3.6rem, 11vw, 6.4rem);
+  font-weight: 500;
+  letter-spacing: -0.055em;
+  line-height: 0.9;
+  margin: 0 0 2rem;
+}
+
+.name-crown {
+  color: var(--accent);
+  display: inline-block;
+  font-family: Georgia, serif;
+  font-size: 0.4em;
+  margin-left: 0.3em;
+  transform: rotate(25deg) translateY(-1.8em);
+}
+
+.lede {
+  font-size: clamp(1.45rem, 4vw, 2rem);
+  letter-spacing: -0.018em;
+  line-height: 1.28;
+  margin: 0;
+  max-width: 650px;
+}
+
+.byline {
+  align-items: baseline;
+  color: var(--muted);
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 0.68rem;
+  gap: 0.35rem 0.65rem;
+  margin: 2rem 0 0;
+}
+
+.personality-note {
+  display: inline;
+  position: relative;
+}
+
+.personality-note summary {
+  color: var(--accent);
+  cursor: pointer;
+  display: inline;
+  list-style: none;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 0.3em;
+}
+
+.personality-note summary::-webkit-details-marker {
+  display: none;
+}
+
+.personality-note p {
+  border-left: 2px solid var(--accent);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 0.88rem;
+  line-height: 1.45;
+  margin: 0.9rem 0 0;
+  max-width: 26rem;
+  padding-left: 0.9rem;
+}
+
+.about,
+.elsewhere {
+  border-top: 1px solid var(--rule);
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 7rem 1fr;
+  margin-top: clamp(5rem, 13vh, 8rem);
+  padding-top: 1.5rem;
+}
+
+h2 {
+  color: var(--muted);
+  font-size: 0.68rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.about p {
+  font-size: 1.1rem;
+  margin: -0.35rem 0 0;
+  max-width: 31rem;
+}
+
+.elsewhere {
+  margin-top: 4rem;
+}
+
+.elsewhere ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  list-style: none;
+  margin: -0.35rem 0 0;
+  padding: 0;
+}
+
+.elsewhere p {
+  color: var(--muted);
+  font-size: 0.62rem;
+  grid-column: 2;
+  margin: -1rem 0 0;
+}
+
+footer {
+  align-items: center;
+  border-top: 1px solid var(--rule);
+  color: var(--muted);
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 0.62rem;
+  gap: 0.75rem;
+  justify-content: space-between;
+  margin-top: clamp(7rem, 18vh, 12rem);
+  padding-top: 1rem;
+}
+
+footer p {
+  margin: 0;
+}
+
+.footer-mark {
+  background: transparent;
+  border: 0;
+  color: var(--muted);
+  cursor: pointer;
+  font: inherit;
+  padding: 0.35rem;
+}
+
+.footer-mark:hover {
+  color: var(--accent);
+}
+
+.secret-message {
+  color: var(--accent);
+  flex-basis: 100%;
+  text-align: right;
+}
+
+@media (max-width: 560px) {
+  .page-shell {
+    padding: 1.4rem 1.25rem 1.25rem;
+  }
+
+  .site-header {
+    margin-bottom: 6rem;
+  }
+
+  .coordinates {
+    font-size: 0.55rem;
+  }
+
+  .introduction {
+    gap: 2rem;
+    grid-template-columns: 1fr;
+  }
+
+  .portrait {
+    margin-top: 0;
+    max-width: 7.5rem;
+    order: -1;
+  }
+
+  h1 {
+    font-size: clamp(3.4rem, 20vw, 5rem);
+  }
+
+  .lede {
+    font-size: 1.4rem;
+  }
+
+  .about,
+  .elsewhere {
+    gap: 0.8rem;
+    grid-template-columns: 1fr;
+  }
+
+  .elsewhere p {
+    grid-column: 1;
+    margin-top: -0.25rem;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a,
+  button,
+  .wordmark {
+    transition:
+      color 150ms ease,
+      background-color 150ms ease,
+      transform 150ms ease;
+  }
+
+  .wordmark:hover {
+    transform: rotate(2deg);
+  }
+}
