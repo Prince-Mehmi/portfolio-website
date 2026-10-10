@@ -33,6 +33,11 @@ optional links are omitted automatically. Layout and metadata live in
 The repository is configured for `https://www.princemehmi.com` in
 `astro.config.mjs` and `public/CNAME`.
 
+Source code lives on `main`. The deployment workflow builds every push to
+`main` and force-publishes only the generated `dist/` contents to `gh-pages`.
+The branches intentionally have separate histories and should not be merged
+with a pull request.
+
 To use another domain:
 
 1. Change `site` in `astro.config.mjs`.
@@ -40,9 +45,9 @@ To use another domain:
 3. Point the domain's DNS records at the chosen static host.
 4. Configure that same domain in the hosting provider and enable HTTPS.
 
-Any static host that can publish the `dist/` directory will work. For GitHub
-Pages, configure a GitHub Actions workflow to run `npm ci` and `npm run build`,
-then upload `dist/` as the Pages artifact.
+Any static host that can publish the `dist/` directory will work. This
+repository deploys through `.github/workflows/deploy.yml`; it can also be run
+manually from the Actions tab.
 
 Optional details that can be added later in `src/content/site.ts` include a
 verified writing link or other personal website.
